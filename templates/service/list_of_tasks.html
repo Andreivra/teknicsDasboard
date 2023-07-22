@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if all_tasks %}
+    {% for task in all_tasks %}
+        {% if not task.complete %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Company name</th>
+                        <th>Contact name</th>
+                        <th>Created at</th>
+                        <th>End date</th>
+                        <th>Service Status</th>
+                        <th>Task</th>
+                        <th>Agent</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ task }}</td>
+                        <td>{{ task.contact_name }}</td>
+                        <td>{{ task.created_at|date:"d-m-Y" }}</td>
+                        <td>{{ task.end_date|date:"d-m-Y" }}</td>
+                        <td>{{ task.select_status|title }}</td>
+                        <td>{{ task.task_name }}</td>
+                        <td>{{ task.agent_name }}</td>
+                        <td><button>View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <h3> Nu avem TASK-uri create</h3>
+    <br><br>
+    <a href="{% url 'create-task' %}" class="btn btn-primary">Task nou</a>
+{% endif %}
+
+{% endblock %}

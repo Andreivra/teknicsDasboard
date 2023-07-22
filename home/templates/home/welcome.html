@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-xl-4 col-lg-5">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">My To Do List</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                     aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Meniu</div>
+                    <a class="dropdown-item" href="#">Add To Do</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">View To Do's</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <h1> Aici va venii ceva</h1>
+            <h1>Sper</h1>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-4 col-lg-5">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">My To Do List</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                     aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Meniu</div>
+                    <a class="dropdown-item" href="#">Add To Do</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">View To Do's</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+             <h1> Si aici</h1>
+            <h1>Sper</h1>
+        </div>
+    </div>
+</div>
+
+
+{% if all_tasks %}
+    {% for task in all_tasks %}
+        {% if not task.complete %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Company name</th>
+                        <th>Contact name</th>
+                        <th>Created at</th>
+                        <th>Service Status</th>
+                        <th>Task</th>
+                        <th>Agent</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{ task.company_name }}</td>
+                        <td class="text-center">{{ task.contact_name }}</td>
+                        <td class="text-center">{{ task.created_at|date:"d-m-Y" }}</td>
+                        <td class="text-center">{{ task.select_status|title }}</td>
+                        <td class="text-center">{{ task.task_name }}</td>
+                        <td class="text-center">{{ task.agent_name }}</td>
+                        <td><button>View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <h3> Nu avem TASK-uri create</h3>
+    <br><br>
+    <a href="{% url 'create-task' %}" class="btn btn-primary">Task nou</a>
+{% endif %}
+{% endblock %}
