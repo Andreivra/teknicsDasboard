@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'agent.apps.AgentConfig',
-    'service.apps.ServiceConfig'
+    'service.apps.ServiceConfig',
 ]
 
 MIDDLEWARE = [

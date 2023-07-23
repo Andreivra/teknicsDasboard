@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="d-flow flex-column min-vh-100 justify-content-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 mx-auto bg-white rounded shadow">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="m-5 text-center"><h1>Create a new task</h1>
+                        </div>
+                        <form method="post" class="m-5">
+                            {% csrf_token %}
+                            <div class="mb-5">
+                                {{ form.as_p }}
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="submit btn button4 mt-3"> Save</button>
+                                <a href="{% url 'list-of-tasks' %}" class=" btn button4 mt-3">Go back</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -49,3 +49,10 @@ class ServiceTaskListView(ListView):
        #  data['all_tasks'] = tasks
        #  data['form_filters'] = my_filter.form
         return data
+
+
+class ServiceTaskDetailsView(LoginRequiredMixin, DetailView):
+    template_name = 'service/task_details.html'
+    model = Service
+    success_url = reverse_lazy('list-of-tasks')
+    permission_required = 'task.view_task'

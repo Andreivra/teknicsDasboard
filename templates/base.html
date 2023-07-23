@@ -15,6 +15,12 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+
+    <!-- Custom calendar view and clock imports -->
+
+
+	<!--End Calender-->
+
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -28,11 +34,10 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{% url 'list-of-tasks' %}"><i
-                            class="fas fa-download fa-sm text-white-50"></i> The list with tasks</a>
-                </div>
+{#                <div class="d-sm-flex align-items-center justify-content-between mb-4">#}
+{#                    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{% url 'list-of-tasks' %}"><i#}
+{#                            class="fas fa-download fa-sm text-white-50"></i> The list with tasks</a>#}
+{#                </div>#}
                 <div class="row">
                     {% block content %}
 

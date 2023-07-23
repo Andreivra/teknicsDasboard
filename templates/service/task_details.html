@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid align-center d-flex justify-content-center">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="d-flex flex-column min-vh-80 justify-content-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 mx-auto bg-white rounded shadow">
+                            <div class="row-md-12 justify-content-center">
+                                <div class="m-5 mb-5 mt-5 text-center">
+                                    {% if not company.complete %}
+                                        <div class="card d-flex justify-content-center" style="border: 1px solid black; border-radius: 40px; background-color: #bcd3f7;">
+                                            <div class="card-body">
+                                                <h3 class="card-title text-center">Detaliile listei de interventie pentru {{ company.company_name }}</h3>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="card d-flex justify-content-center" style="border: 1px solid black; border-radius: 40px; background-color: #86b0b6;">
+                                            <div class="card-body">
+                                                <h3 class="card-title text-center">Detaliile listei de interventie pentru {{ company.company_name }}</h3>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <br><br><hr>
+                                    {% if not company.complete %}
+                                        <table class=" d-flow table table-primary table-striped min-vh-80" style="border: 1px solid black;">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" scope="col">Persoana Contact</th>
+                                                    <th class="text-center" scope="col">Numar contact</th>
+                                                    <th class="text-center" scope="col">E-mail</th>
+                                                    <th class="text-center" scope="col">Data creare</th>
+                                                    <th class="text-center" scope="col">Data finalizare</th>
+                                                    <th class="text-center" scope="col">Status</th>
+                                                    <th class="text-center" scope="col">Responsabil</th>
+                                                    <th class="text-center" scope="col">Predat prin</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">{{ service.contact_name }}</td>
+                                                    <td class="text-center">{{ service.phone }}</td>
+                                                    <td class="text-center">{{ service.email }}</td>
+                                                    <td class="text-center">{{ service.created_at|date:"d-m-Y" }}</td>
+                                                    <td class="text-center">{{ service.end_date|date:"d-m-Y" }}</td>
+                                                    <td class="text-center">{{ service.select_status|title }}</td>
+                                                    <td class="text-center">{{ service.agent_name }}</td>
+                                                    <td class="text-center">{{ service.select_delivery }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <table class=" d-flow table table-success table-striped min-vh-80" style="border: 1px solid black;">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" scope="col">Persoana Contact</th>
+                                                    <th class="text-center" scope="col">Numar contact</th>
+                                                    <th class="text-center" scope="col">E-mail</th>
+                                                    <th class="text-center" scope="col">Data creare</th>
+                                                    <th class="text-center" scope="col">Data finalizare</th>
+                                                    <th class="text-center" scope="col">Status</th>
+                                                    <th class="text-center" scope="col">Responsabil</th>
+                                                    <th class="text-center" scope="col">Predat prin</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">{{ service.contact_name }}</td>
+                                                    <td class="text-center">{{ service.phone }}</td>
+                                                    <td class="text-center">{{ service.email }}</td>
+                                                    <td class="text-center">{{ service.created_at|date:"d-m-Y" }}</td>
+                                                    <td class="text-center">{{ service.end_date|date:"d-m-Y" }}</td>
+                                                    <td class="text-center">{{ service.select_status|title }}</td>
+                                                    <td class="text-center">{{ service.agent_name }}</td>
+                                                    <td class="text-center">{{ service.select_delivery }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    {% endif %}
+                                    <h5 class="d-flex justify-content-right">Detalii problema</h5>
+                                    <div class="card" style="border: 1px solid black;">
+                                        <div class="card-body">
+                                            {{ service.task_name }}
+                                            <br>
+                                            {{ service.task_description }}
+                                         </div>
+                                    </div>
+                                    <br><br>
+                                    <br>
+                                    {% if service.task_asses %}
+                                    <h5 class="d-flex justify-content-right">Constatare</h5>
+                                    <div class="card" style="border: 1px solid black;">
+                                        <div class="card-body">
+                                            {{ service.task_asses }}
+                                         </div>
+                                    </div>
+                                    {% endif %}
+                                    <br><br>
+                                    <br>
+                                    {% if service.task_resolve %}
+                                    <h5 class="d-flex justify-content-right">Rezolvare</h5>
+                                    <div class="card" style="border: 1px solid black;">
+                                        <div class="card-body">
+                                            {{ service.task_resolve }}
+                                         </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="d-flex flex-column min-vh-80 justify-content-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 mx-auto bg-white rounded shadow">
+                            <div class="col-md-12">
+                                <div class="m-8 mb-5 mt-5 text-center">
+                                    {% if not company.complete %}
+                                    <div class="card d-flex justify-content-center" style="border: 1px solid black; border-radius: 40px; background-color: #bcd3f7;">
+                                        <div class="card-body">
+                                            <h3 class="card-title text-center">Meniu</h3>
+                                        </div>
+                                    </div>
+                                    <br><br>
+
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <a href="{% url 'list-of-tasks' %}" class="menu_button button1 me-md-2" type="button">Go back</a>
+                                        </div>
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <a href="#" class="menu_button button1 me-md-2" type="button">Update</a>
+                                        </div>
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <a href="#" class="menu_button button2 me-md-2" type="button">Delete</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="card d-flex justify-content-center" style="border: 1px solid black; border-radius: 40px; background-color: #86b0b6;">
+                                            <div class="card-body">
+                                                <h3 class="card-title text-center">Meniu</h3>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                                    <h5 class="text-center">Acest task a fost inchis  in {{ company.end_date|date:"d/m/Y" }}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                                    <a href="{% url 'completed-tasks' %}" class="button button4">Back</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
